@@ -10,9 +10,9 @@ import java.util.Map;
  * Contains the settings as specified by the user
  */
 public class UserInput {
-       final Map<String, List<String>> mParams = new HashMap<>();
+       final private Map<String, List<String>> mParams = new HashMap<>();
 
-    UserInput(String[] args) {
+    public UserInput(String[] args) {
         List<String> options = null;
         for (int i = 0; i < args.length; i++) {
             final String a = args[i];

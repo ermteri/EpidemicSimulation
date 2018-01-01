@@ -1,6 +1,8 @@
-package se.torsteneriksson.epidemicsimulation;
+package se.torsteneriksson.epidemicsimulation.test;
 
 import org.junit.Assert;
+import se.torsteneriksson.epidemicsimulation.HumanBeing;
+import se.torsteneriksson.epidemicsimulation.Utilities;
 
 class HumanBeingTest {
 

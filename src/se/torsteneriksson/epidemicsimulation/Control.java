@@ -9,7 +9,8 @@ public class Control {
     private int numberOfDeadAccumulated;
     private UserInput mUserInput;
     private Utilities mUtil = new Utilities();
-    Control(UserInput userInput){
+
+    public Control(UserInput userInput){
         this.mUserInput = userInput;
     }
 
@@ -30,7 +31,7 @@ public class Control {
         numberOfDeadAccumulated = 0;
         while(loopOneDay()) {
             numberOfDays++;
-        };
+        }
         System.out.println("Simulation done after " + numberOfDays + " days");
 
     }

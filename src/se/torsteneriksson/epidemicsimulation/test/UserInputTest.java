@@ -1,13 +1,14 @@
-package se.torsteneriksson.epidemicsimulation;
+package se.torsteneriksson.epidemicsimulation.test;
 
 import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import se.torsteneriksson.epidemicsimulation.UserInput;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class UserInputTest {
-    UserInput ui;
+    private UserInput ui;
 
     @BeforeEach
     void setUp() {

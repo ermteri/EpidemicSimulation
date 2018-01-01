@@ -1,7 +1,9 @@
-package se.torsteneriksson.epidemicsimulation;
+package se.torsteneriksson.epidemicsimulation.test;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import se.torsteneriksson.epidemicsimulation.Control;
+import se.torsteneriksson.epidemicsimulation.UserInput;
 
 import static org.junit.jupiter.api.Assertions.*;
 
