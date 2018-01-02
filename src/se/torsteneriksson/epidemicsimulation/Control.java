@@ -27,6 +27,7 @@ public class Control {
         numberOfDeadAccumulated = 0;
         while(loopOneDay()) {
             numberOfDays++;
+            mUtil.reportDay(mPopulation);
         }
         System.out.println("Simulation done after " + numberOfDays + " days");
     }

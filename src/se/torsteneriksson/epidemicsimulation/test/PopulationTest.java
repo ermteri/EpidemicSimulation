@@ -44,7 +44,7 @@ class PopulationTest {
                     if (population.checkIfBeInfected(30)) {
                         numOfSick++;
                     }
-                    // Reset the healthstate since we are looping over the same humanbeing.
+                    // Reset the healthState since we are looping over the same human being.
                     humanBeing.setHealthState(HumanBeing.Healthstate.HEALTHY);
                 }
                 System.out.println("numOfSick: " + numOfSick);

@@ -32,11 +32,32 @@ public class Utilities {
                              int numberOfGetInfected,
                              int numberOfDied,
                              int numberOfRecovered) {
-        System.out.println("InfectedAccu:" + numberOfInfectedAccumulated +
+        /*System.out.println("InfectedAccu:" + numberOfInfectedAccumulated +
                 ", Dead accu:" + numberOfDeadAccumulated+
                 ", Ill:" + numberOfIll +
                 ", Infected:"+numberOfGetInfected +
                 ", Died:" + numberOfDied +
-                ", Recovered:"+ numberOfRecovered);
+                ", Recovered:"+ numberOfRecovered);*/
+    }
+
+    public void reportDay(Population population) {
+        int numHealthy = 0;
+        int numSick = 0;
+        int numImmune = 0;
+        int numDead = 0;
+        for(Object o: population) {
+            HumanBeing hb = (HumanBeing)o;
+            switch (hb.getHealthState()) {
+                case HEALTHY: numHealthy++;
+                break;
+                case SICK: numSick++;
+                break;
+                case DEAD: numDead++;
+                break;
+            }
+            if(hb.isImmune())
+                numImmune++;
+         }
+        System.out.printf("%d,%d,%d,%d\n",numHealthy,numSick,numImmune,numDead);
     }
 }
