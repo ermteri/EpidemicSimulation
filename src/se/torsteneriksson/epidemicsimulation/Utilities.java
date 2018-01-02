@@ -32,12 +32,12 @@ public class Utilities {
                              int numberOfGetInfected,
                              int numberOfDied,
                              int numberOfRecovered) {
-        /*System.out.println("InfectedAccu:" + numberOfInfectedAccumulated +
+        System.out.println("InfectedAccu:" + numberOfInfectedAccumulated +
                 ", Dead accu:" + numberOfDeadAccumulated+
                 ", Ill:" + numberOfIll +
                 ", Infected:"+numberOfGetInfected +
                 ", Died:" + numberOfDied +
-                ", Recovered:"+ numberOfRecovered);*/
+                ", Recovered:"+ numberOfRecovered);
     }
 
     public void reportDay(Population population) {
@@ -58,6 +58,6 @@ public class Utilities {
             if(hb.isImmune())
                 numImmune++;
          }
-        System.out.printf("%d,%d,%d,%d\n",numHealthy,numSick,numImmune,numDead);
+        //System.out.printf("%d,%d,%d,%d\n",numHealthy,numSick,numImmune,numDead);
     }
 }
