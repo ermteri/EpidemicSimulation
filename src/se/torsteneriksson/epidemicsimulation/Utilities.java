@@ -6,7 +6,7 @@ import java.util.Random;
  * Utilities for common functions
  */
 public class Utilities {
-    private Random r = new Random();
+    final private Random r = new Random();
 
     /**
      * Check if the event should happen in this time.

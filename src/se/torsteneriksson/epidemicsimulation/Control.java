@@ -1,7 +1,5 @@
 package se.torsteneriksson.epidemicsimulation;
 
-import java.util.Iterator;
-
 /**
  * Responsible for execution of the simulation
  */
@@ -9,8 +7,8 @@ public class Control {
     private Population mPopulation;
     private int numberOfInfectedAccumulated;
     private int numberOfDeadAccumulated;
-    private UserInput mUserInput;
-    private Utilities mUtil = new Utilities();
+    final private UserInput mUserInput;
+    final private Utilities mUtil = new Utilities();
 
     public Control(UserInput userInput){
         this.mUserInput = userInput;
@@ -46,7 +44,7 @@ public class Control {
             }
             if(hb.getHealthState() == HumanBeing.Healthstate.SICK) {
                 numberOfIll++;
-                hb.incremecntSickDays();
+                hb.incrementSickDays();
             }
             if(hb.checkIfRecovered(mUserInput.getSickDaysMin(),mUserInput.getSickDaysMax()))
                 numberOfRecovered++;

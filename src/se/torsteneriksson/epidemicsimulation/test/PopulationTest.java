@@ -5,10 +5,6 @@ import org.junit.jupiter.api.Test;
 import se.torsteneriksson.epidemicsimulation.HumanBeing;
 import se.torsteneriksson.epidemicsimulation.Population;
 
-import java.util.Iterator;
-
-import static org.junit.jupiter.api.Assertions.*;
-
 class PopulationTest {
 
     @Test

@@ -17,14 +17,14 @@ class HumanBeingTest {
     }
 
     @org.junit.jupiter.api.Test
-    void incremecntSickDays() {
+    void incrementSickDays() {
         HumanBeing hb = new HumanBeing();
         Assert.assertTrue(hb.getSickDays() == 0);
-        hb.incremecntSickDays();
+        hb.incrementSickDays();
         Assert.assertTrue(hb.getSickDays() == 1);
-        hb.incremecntSickDays();
-        hb.incremecntSickDays();
-        hb.incremecntSickDays();
+        hb.incrementSickDays();
+        hb.incrementSickDays();
+        hb.incrementSickDays();
         Assert.assertTrue(hb.getSickDays() == 4);
     }
 
@@ -32,28 +32,28 @@ class HumanBeingTest {
     void getSickDays() {
         HumanBeing hb = new HumanBeing();
         Assert.assertTrue(hb.getSickDays() == 0);
-        hb.incremecntSickDays();
-        hb.incremecntSickDays();
+        hb.incrementSickDays();
+        hb.incrementSickDays();
         Assert.assertTrue(hb.getSickDays() == 2);
     }
 
     @org.junit.jupiter.api.Test
-    void setIsImune() {
+    void setIsImmune() {
         HumanBeing hb = new HumanBeing();
-        Assert.assertFalse(hb.isImune());
-        hb.setImune(true);
-        Assert.assertTrue(hb.isImune());
-        hb.setImune(false);
-        Assert.assertFalse(hb.isImune());
+        Assert.assertFalse(hb.isImmune());
+        hb.setImmune(true);
+        Assert.assertTrue(hb.isImmune());
+        hb.setImmune(false);
+        Assert.assertFalse(hb.isImmune());
     }
 
     @org.junit.jupiter.api.Test
     void checkIfRecovered() {
         HumanBeing hb = new HumanBeing();
-        hb.incremecntSickDays();
-        hb.incremecntSickDays();
-        hb.incremecntSickDays();
-        //hb.incremecntSickDays();*/
+        hb.incrementSickDays();
+        hb.incrementSickDays();
+        hb.incrementSickDays();
+        //hb.incrementSickDays();*/
         int recovered = 0;
         int notRecovered = 0;
         for(int i = 0;i < 10000;i++) {
@@ -71,7 +71,7 @@ class HumanBeingTest {
         Utilities util = new Utilities();
         HumanBeing hb = new HumanBeing();
         Assert.assertTrue(hb.getHealthState() == HumanBeing.Healthstate.HEALTHY);
-        hb.incremecntSickDays();
+        hb.incrementSickDays();
         hb.setHealthState(HumanBeing.Healthstate.SICK);
         int dead = 0;
         for(int i = 0;i < 10000 ;i++) {

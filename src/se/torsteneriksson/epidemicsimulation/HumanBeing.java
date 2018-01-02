@@ -12,7 +12,7 @@ public class HumanBeing {
     public enum Healthstate {HEALTHY, SICK, DEAD}
     private Healthstate healthState = HEALTHY;
     private int sickDays = 0;
-    private boolean imune = false;
+    private boolean immune = false;
 
     public Healthstate getHealthState() {
         return healthState;
@@ -22,7 +22,7 @@ public class HumanBeing {
         this.healthState = healthState;
     }
 
-    public void incremecntSickDays() {
+    public void incrementSickDays() {
         this.sickDays++;
     }
 
@@ -30,12 +30,12 @@ public class HumanBeing {
         return this.sickDays;
     }
 
-    public boolean isImune() {
-        return imune;
+    public boolean isImmune() {
+        return immune;
     }
 
-    public void setImune(boolean imune) {
-        this.imune = imune;
+    public void setImmune(boolean immune) {
+        this.immune = immune;
     }
 
     /**
@@ -51,7 +51,7 @@ public class HumanBeing {
         //System.out.println("Result:"+ result);
         if(sickDays >= result) {
             healthState = HEALTHY;
-            imune = true;
+            immune = true;
             return true;
         }
         return false;

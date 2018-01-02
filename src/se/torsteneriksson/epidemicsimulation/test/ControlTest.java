@@ -5,8 +5,6 @@ import org.junit.jupiter.api.Test;
 import se.torsteneriksson.epidemicsimulation.Control;
 import se.torsteneriksson.epidemicsimulation.UserInput;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class ControlTest {
     private Control ctl;
     @BeforeEach

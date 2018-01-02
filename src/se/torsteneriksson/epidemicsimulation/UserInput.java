@@ -1,6 +1,5 @@
 package se.torsteneriksson.epidemicsimulation;
 
-import java.nio.IntBuffer;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -14,9 +13,7 @@ public class UserInput {
 
     public UserInput(String[] args) {
         List<String> options = null;
-        for (int i = 0; i < args.length; i++) {
-            final String a = args[i];
-
+        for (final String a : args) {
             if (a.charAt(0) == '-') {
                 if (a.length() < 2) {
                     System.err.println("Error at argument " + a);
@@ -25,11 +22,9 @@ public class UserInput {
 
                 options = new ArrayList<>();
                 mParams.put(a.substring(1), options);
-            }
-            else if (options != null) {
+            } else if (options != null) {
                 options.add(a);
-            }
-            else {
+            } else {
                 System.err.println("Illegal parameter usage");
                 return;
             }

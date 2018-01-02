@@ -4,11 +4,11 @@ import java.util.Iterator;
 
 /**
  * Represents a full population and encapsulate that it is
- * actually representad by a matrix XxY
+ * actually represented by a matrix XxY
  */
 public class Population implements Iterable {
-    private HumanBeing[][] mPopulation;
-    private Utilities mUtil;
+    final private HumanBeing[][] mPopulation;
+    final private Utilities mUtil;
     private int curr_x = 0;
     private int curr_y = 0;
 
@@ -20,7 +20,7 @@ public class Population implements Iterable {
             }
         }
         mPopulation[hb.length/2][hb.length/2].setHealthState(HumanBeing.Healthstate.SICK);
-        mPopulation[hb.length/2][hb.length/2].incremecntSickDays();
+        mPopulation[hb.length/2][hb.length/2].incrementSickDays();
         mUtil = new Utilities();
 
     }
@@ -28,7 +28,7 @@ public class Population implements Iterable {
     public Iterator iterator() {
         curr_x = 0;
         curr_y = 0;
-        Iterator it = new Iterator() {
+        return new Iterator() {
             private int x = 0;
             private int y = 0;
 
@@ -68,7 +68,6 @@ public class Population implements Iterable {
                 // do nothing
             }
         };
-        return it;
     }// End method iterator
 
     public int getSize() {
@@ -76,7 +75,7 @@ public class Population implements Iterable {
     }
 
     public boolean checkIfBeInfected(int probability) {
-        if(!mPopulation[curr_x][curr_y].isImune() && (mPopulation[curr_x][curr_y].getHealthState()== HumanBeing.Healthstate.HEALTHY)) {
+        if(!mPopulation[curr_x][curr_y].isImmune() && (mPopulation[curr_x][curr_y].getHealthState()== HumanBeing.Healthstate.HEALTHY)) {
             if(isNeighbourInfected(curr_x,curr_y)) {
                 if(mUtil.isHappening(probability)) {
                     mPopulation[curr_x][curr_y].setHealthState(HumanBeing.Healthstate.SICK);
