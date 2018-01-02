@@ -22,8 +22,8 @@ public class Control {
 
     }
     public void startSimulation() {
-        System.out.println("Simulate started on population with " +
-                mUserInput.getPopulationSize()*mUserInput.getPopulationSize() + " inhabitants");
+        System.out.println("Simulation started on population with " +
+                mPopulation.getSize() + " inhabitants");
         int numberOfDays = 0;
         numberOfInfectedAccumulated = 0;
         numberOfDeadAccumulated = 0;
@@ -31,7 +31,6 @@ public class Control {
             numberOfDays++;
         }
         System.out.println("Simulation done after " + numberOfDays + " days");
-
     }
 
     private boolean loopOneDay() {
@@ -39,11 +38,12 @@ public class Control {
         int numberOfGetInfected = 0;
         int numberOfDied = 0;
         int numberOfRecovered = 0;
-        Iterator iter = mPopulation.iterator();
-        while (iter.hasNext()) {
-            HumanBeing hb = (HumanBeing)iter.next();
-            if(mPopulation.checkIfBeInfected(mUserInput.getContaminationProbability()))
+
+        for(Object o: mPopulation) {
+            HumanBeing hb = (HumanBeing)o;
+            if(mPopulation.checkIfBeInfected(mUserInput.getContaminationProbability())) {
                 numberOfGetInfected++;
+            }
             if(hb.getHealthState() == HumanBeing.Healthstate.SICK) {
                 numberOfIll++;
                 hb.incremecntSickDays();
