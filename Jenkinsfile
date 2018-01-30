@@ -10,7 +10,7 @@ pipeline {
         stage("Test") {
             steps {
                 bat "javac"
-                #archiveArtifacts artifacts: '*.java', fingerprint: true
+                // archiveArtifacts artifacts: '*.java', fingerprint: true
                 echo "Done!"
             }
         }
