@@ -9,8 +9,8 @@ pipeline {
         }
         stage("Test") {
             steps {
-                bat "C:/Users/Torsten/python/python.exe web_crawler_org.py"
-                archiveArtifacts artifacts: '*.py', fingerprint: true
+                bat "javac"
+                #archiveArtifacts artifacts: '*.java', fingerprint: true
                 echo "Done!"
             }
         }
