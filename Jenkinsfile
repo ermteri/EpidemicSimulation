@@ -9,7 +9,7 @@ pipeline {
         }
         stage("Test") {
             steps {
-                // bat "make check||true"
+                bat 'mvn -B -DskipTests clean package'
                 junit '*.xml'
                 // archiveArtifacts artifacts: '*.java', fingerprint: true
                 echo "Done!"
