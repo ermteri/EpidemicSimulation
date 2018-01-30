@@ -9,7 +9,8 @@ pipeline {
         }
         stage("Test") {
             steps {
-                bat "javac"
+                bat "make check||true"
+                junit '**/target/*.xml'
                 // archiveArtifacts artifacts: '*.java', fingerprint: true
                 echo "Done!"
             }
