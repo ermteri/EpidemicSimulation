@@ -1,18 +1,15 @@
 pipeline {
-    agent { label 'master'}
-    stages {
-        stage("Checkout") {
-            steps {
-                git 'https://github.com/ermteri/EpidemicSimulation.git'
-                echo "Checkout done"
-            }
+    agent {
+        docker {
+            image 'maven:3-alpine' 
+            args '-v /root/.m2:/root/.m2' 
         }
-        stage("Test") {
+    }
+    stages {
+        stage('Build') { 
             steps {
-                bat 'mvn -B -DskipTests clean package'
-                junit '*.xml'
-                // archiveArtifacts artifacts: '*.java', fingerprint: true
-                echo "Done!"
+                //sh 'mvn -B -DskipTests clean package' 
+                sh 'mvn --version'
             }
         }
     }
