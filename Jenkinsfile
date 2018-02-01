@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                sh 'mvn -B clean package' 
+                sh 'mvn -X -B clean package'
                 //sh 'mvn --version'
             }
         }
