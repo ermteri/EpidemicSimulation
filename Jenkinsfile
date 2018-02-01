@@ -10,12 +10,9 @@ pipeline {
             steps {
                 sh 'mvn -B clean package'
                 //sh 'mvn --version'
+                junit 'build/reports/**/*.xml'
             }
-        }
-    }
-    post {
-        always {
-            junit 'build/reports/**/*.xml'
+
         }
     }
 }
