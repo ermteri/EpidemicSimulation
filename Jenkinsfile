@@ -9,7 +9,7 @@ pipeline {
         stage('Build') { 
             steps {
                 sh 'mvn -B clean package'
-                archive "target/**/*
+                archive 'target/**/*'
                 //sh 'mvn --version'
                 junit 'target/**/*.xml'
             }
