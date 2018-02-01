@@ -10,7 +10,7 @@ class UserInputTest {
 
     @BeforeEach
     void setUp() {
-        String args[] = {"-cp", "0", "-dmi", "2", "-dma", "1", "-dp", "10", "-ps", "10"};
+        String args[] = {"-cp", "0", "-dmi", "2", "-dma", "10", "-dp", "10", "-ps", "10"};
         ui = new UserInput(args);
     }
 
