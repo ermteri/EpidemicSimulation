@@ -51,7 +51,7 @@ class UserInputTest {
 
     @Test
     void getSickDaysMinMissing() {
-        String args[] = {"-cp", "2", "-dmX", "w", "-dma", "10", "-dp", "10", "-ps", "10"};
+        String args[] = {"-cp", "2", "-dmX", "2", "-dma", "10", "-dp", "10", "-ps", "10"};
         try {
             ui = new UserInput(args);
             ui.getSickDaysMin();
@@ -59,7 +59,7 @@ class UserInputTest {
             Assert.assertTrue(e instanceof NullPointerException);
             return;
         }
-        Assert.fail("No exception thrown, expected NumberFormatException");
+        Assert.fail("No exception thrown, expected NullPointerException");
     }
 
     @Test
@@ -78,6 +78,32 @@ class UserInputTest {
     @Test
     void getSickDaysMax() {
         Assert.assertTrue(ui.getSickDaysMax() == 10);
+    }
+
+    @Test
+    void getSickDaysMaxMissing() {
+        String args[] = {"-cp", "2", "-dmi", "2", "-dmX", "10", "-dp", "10", "-ps", "10"};
+        try {
+            ui = new UserInput(args);
+            ui.getSickDaysMax();
+        } catch (Exception e) {
+            Assert.assertTrue(e instanceof NullPointerException);
+            return;
+        }
+        Assert.fail("No exception thrown, expected NumberFormatException");
+    }
+
+    @Test
+    void getSickDaysMaxInvalid() {
+        String args[] = {"-cp", "2", "-dmi", "2", "-dma", "s", "-dp", "10", "-ps", "10"};
+        try {
+            ui = new UserInput(args);
+            ui.getSickDaysMax();
+        } catch (Exception e) {
+            Assert.assertTrue(e instanceof NullPointerException);
+            return;
+        }
+        Assert.fail("No exception thrown, expected NumberFormatException");
     }
 
     @Test
