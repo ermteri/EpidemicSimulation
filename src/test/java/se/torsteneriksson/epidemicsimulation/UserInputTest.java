@@ -90,7 +90,7 @@ class UserInputTest {
             Assert.assertTrue(e instanceof NullPointerException);
             return;
         }
-        Assert.fail("No exception thrown, expected NumberFormatException");
+        Assert.fail("No exception thrown, expected NullPointerException");
     }
 
     @Test
@@ -100,7 +100,7 @@ class UserInputTest {
             ui = new UserInput(args);
             ui.getSickDaysMax();
         } catch (Exception e) {
-            Assert.assertTrue(e instanceof NullPointerException);
+            Assert.assertTrue(e instanceof NumberFormatException);
             return;
         }
         Assert.fail("No exception thrown, expected NumberFormatException");
@@ -112,7 +112,59 @@ class UserInputTest {
     }
 
     @Test
+    void getDeathProbabilityMissing() {
+        String args[] = {"-cp", "2", "-dmi", "2", "-dmX", "10", "-dX", "10", "-ps", "10"};
+        try {
+            ui = new UserInput(args);
+            ui.getDeathProbability();
+        } catch (Exception e) {
+            Assert.assertTrue(e instanceof NullPointerException);
+            return;
+        }
+        Assert.fail("No exception thrown, expected NullPointerException");
+    }
+
+    @Test
+    void getDeathProbabilityInvalid() {
+        String args[] = {"-cp", "2", "-dmi", "2", "-dmX", "10", "-dp", "1s", "-ps", "10"};
+        try {
+            ui = new UserInput(args);
+            ui.getDeathProbability();
+        } catch (Exception e) {
+            Assert.assertTrue(e instanceof NumberFormatException);
+            return;
+        }
+        Assert.fail("No exception thrown, expected NumberFormatException");
+    }
+
+    @Test
     void getPopulationSize() {
         Assert.assertTrue(ui.getPopulationSize() == 10);
+    }
+
+    @Test
+    void getPopulationSizeMissing() {
+        String args[] = {"-cp", "2", "-dmi", "2", "-dma", "10", "-dp", "10", "-pSs", "10"};
+        try {
+            ui = new UserInput(args);
+            ui.getPopulationSize();
+        } catch (Exception e) {
+            Assert.assertTrue(e instanceof NullPointerException);
+            return;
+        }
+        Assert.fail("No exception thrown, expected NullPointerException");
+    }
+
+    @Test
+    void getPopulationSizeInvalid() {
+        String args[] = {"-cp", "2", "-dmi", "2", "-dma", "10", "-dp", "10", "-ps", "e10"};
+        try {
+            ui = new UserInput(args);
+            ui.getPopulationSize();
+        } catch (Exception e) {
+            Assert.assertTrue(e instanceof NumberFormatException);
+            return;
+        }
+        Assert.fail("No exception thrown, expected NumberFormatException");
     }
 }
