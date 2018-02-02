@@ -31,15 +31,7 @@ public class UserInput {
         }
     }
     public int getContaminationProbability() {
-        try {
-            return Integer.valueOf(mParams.get("cp").get(0));
-        } catch(NullPointerException e) {
-            System.err.println("cp param not found!" + e.toString());
-            return -1;
-        } catch(NumberFormatException e) {
-            System.err.println("cp param value not a number"+e.toString());
-            return -2;
-        }
+        return Integer.valueOf(mParams.get("cp").get(0));
     }
 
     public int getSickDaysMin() {

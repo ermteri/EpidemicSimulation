@@ -20,15 +20,27 @@ class UserInputTest {
     @Test
     void getContaminationProbabilityCpMissing() {
         String args[] = {"-cd", "0", "-dmi", "2", "-dma", "10", "-dp", "10", "-ps", "10"};
-        ui = new UserInput(args);
-        Assert.assertTrue(ui.getContaminationProbability()== -1);
+        try {
+            ui = new UserInput(args);
+            ui.getContaminationProbability();
+        } catch (Exception e) {
+            Assert.assertTrue(e instanceof NullPointerException);
+            return;
+        }
+        Assert.fail("No exception thrown, expected NullPointerException");
     }
 
     @Test
     void getContaminationProbabilityCpInvalid() {
         String args[] = {"-cp", "w", "-dmi", "2", "-dma", "10", "-dp", "10", "-ps", "10"};
-        ui = new UserInput(args);
-        Assert.assertTrue(ui.getContaminationProbability()== -2);
+        try {
+            ui = new UserInput(args);
+            ui.getContaminationProbability();
+        } catch (Exception e) {
+            Assert.assertTrue(e instanceof NumberFormatException);
+            return;
+        }
+        Assert.fail("No exception thrown, expected NumberFormatException");
     }
     @Test
     void getSickDaysMin() {
