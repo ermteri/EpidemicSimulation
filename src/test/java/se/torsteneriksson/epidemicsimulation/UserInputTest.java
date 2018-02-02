@@ -42,9 +42,37 @@ class UserInputTest {
         }
         Assert.fail("No exception thrown, expected NumberFormatException");
     }
+
+
     @Test
     void getSickDaysMin() {
         Assert.assertTrue(ui.getSickDaysMin() == 2);
+    }
+
+    @Test
+    void getSickDaysMinMissing() {
+        String args[] = {"-cp", "2", "-dmX", "w", "-dma", "10", "-dp", "10", "-ps", "10"};
+        try {
+            ui = new UserInput(args);
+            ui.getSickDaysMin();
+        } catch (Exception e) {
+            Assert.assertTrue(e instanceof NullPointerException);
+            return;
+        }
+        Assert.fail("No exception thrown, expected NumberFormatException");
+    }
+
+    @Test
+    void getSickDaysMinInvalid() {
+        String args[] = {"-cp", "2", "-dmi", "w", "-dma", "10", "-dp", "10", "-ps", "10"};
+        try {
+            ui = new UserInput(args);
+            ui.getSickDaysMin();
+        } catch (Exception e) {
+            Assert.assertTrue(e instanceof NumberFormatException);
+            return;
+        }
+        Assert.fail("No exception thrown, expected NumberFormatException");
     }
 
     @Test
