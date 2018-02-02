@@ -18,19 +18,18 @@ class UserInputTest {
     }
 
     @Test
-    void getContaminationProbabilityCpMissing() throws Exception {
+    void getContaminationProbabilityCpMissing() {
         String args[] = {"-cd", "0", "-dmi", "2", "-dma", "10", "-dp", "10", "-ps", "10"};
         ui = new UserInput(args);
-        try {
-            ui.getContaminationProbability();
-        } catch (Exception e) {
-            System.err.println("Exception:" + e.toString());
-            Assert.assertTrue(e instanceof NullPointerException);
-            return;
-        }
-        Assert.fail("Expected exception not thrown");
+        Assert.assertTrue(ui.getContaminationProbability()== -1);
     }
 
+    @Test
+    void getContaminationProbabilityCpInvalid() {
+        String args[] = {"-cp", "w", "-dmi", "2", "-dma", "10", "-dp", "10", "-ps", "10"};
+        ui = new UserInput(args);
+        Assert.assertTrue(ui.getContaminationProbability()== -2);
+    }
     @Test
     void getSickDaysMin() {
         Assert.assertTrue(ui.getSickDaysMin() == 2);
