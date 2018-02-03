@@ -20,14 +20,9 @@ class UserInputTest {
     @Test
     void getContaminationProbabilityCpMissing() {
         String args[] = {"-cd", "0", "-dmi", "2", "-dma", "10", "-dp", "10", "-ps", "10"};
-        try {
-            ui = new UserInput(args);
-            ui.getContaminationProbability();
-        } catch (Exception e) {
-            Assert.assertTrue(e instanceof NullPointerException);
-            return;
-        }
-        Assert.fail("No exception thrown, expected NullPointerException");
+
+        ui = new UserInput(args);
+        Assert.assertTrue(ui.getContaminationProbability() == ui.CONTAMINATIONPROPABILITY);
     }
 
     @Test
@@ -52,14 +47,9 @@ class UserInputTest {
     @Test
     void getSickDaysMinMissing() {
         String args[] = {"-cp", "2", "-dmX", "2", "-dma", "10", "-dp", "10", "-ps", "10"};
-        try {
-            ui = new UserInput(args);
-            ui.getSickDaysMin();
-        } catch (Exception e) {
-            Assert.assertTrue(e instanceof NullPointerException);
-            return;
-        }
-        Assert.fail("No exception thrown, expected NullPointerException");
+
+        ui = new UserInput(args);
+        Assert.assertTrue(ui.getSickDaysMin() == ui.SICKDAYSMIN);
     }
 
     @Test
@@ -83,14 +73,9 @@ class UserInputTest {
     @Test
     void getSickDaysMaxMissing() {
         String args[] = {"-cp", "2", "-dmi", "2", "-dmX", "10", "-dp", "10", "-ps", "10"};
-        try {
-            ui = new UserInput(args);
-            ui.getSickDaysMax();
-        } catch (Exception e) {
-            Assert.assertTrue(e instanceof NullPointerException);
-            return;
-        }
-        Assert.fail("No exception thrown, expected NullPointerException");
+
+        ui = new UserInput(args);
+        Assert.assertTrue(ui.getSickDaysMax() == ui.SICKDAYSMAX);
     }
 
     @Test
@@ -114,14 +99,9 @@ class UserInputTest {
     @Test
     void getDeathProbabilityMissing() {
         String args[] = {"-cp", "2", "-dmi", "2", "-dmX", "10", "-dX", "10", "-ps", "10"};
-        try {
-            ui = new UserInput(args);
-            ui.getDeathProbability();
-        } catch (Exception e) {
-            Assert.assertTrue(e instanceof NullPointerException);
-            return;
-        }
-        Assert.fail("No exception thrown, expected NullPointerException");
+
+        ui = new UserInput(args);
+        Assert.assertTrue(ui.getDeathProbability() == ui.DEATHPROABILITY);
     }
 
     @Test
@@ -145,14 +125,9 @@ class UserInputTest {
     @Test
     void getPopulationSizeMissing() {
         String args[] = {"-cp", "2", "-dmi", "2", "-dma", "10", "-dp", "10", "-pSs", "10"};
-        try {
-            ui = new UserInput(args);
-            ui.getPopulationSize();
-        } catch (Exception e) {
-            Assert.assertTrue(e instanceof NullPointerException);
-            return;
-        }
-        Assert.fail("No exception thrown, expected NullPointerException");
+
+        ui = new UserInput(args);
+        Assert.assertTrue(ui.getPopulationSize() == ui.POPULATIONSIZE);
     }
 
     @Test

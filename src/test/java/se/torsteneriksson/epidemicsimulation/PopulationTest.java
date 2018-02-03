@@ -31,6 +31,7 @@ class PopulationTest {
         Assert.assertTrue(population.getSize() == 100);
     }
 
+
     @Test
     void checkIfBeInfected() {
         HumanBeing hb[][] = new HumanBeing[3][3];
