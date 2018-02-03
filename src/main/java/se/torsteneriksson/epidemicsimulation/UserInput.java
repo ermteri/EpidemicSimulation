@@ -14,11 +14,12 @@ public class UserInput {
     final private Map<String, List<String>> mParams = new HashMap<>();
 
     // Default values
-    public int CONTAMINATIONPROPABILITY = 30;
-    public int SICKDAYSMIN = 2;
+    // -cp 17 -dmi 3 -dma 5 -dp 10 -ps 10
+    public int CONTAMINATIONPROPABILITY = 17;
+    public int SICKDAYSMIN = 3;
     public int SICKDAYSMAX = 5;
     public int DEATHPROABILITY = 10;
-    public int POPULATIONSIZE = 100;
+    public int POPULATIONSIZE = 10;
 
 
     public UserInput(String[] args) {

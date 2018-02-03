@@ -60,4 +60,10 @@ public class Utilities {
          }
         //System.out.printf("%d,%d,%d,%d\n",numHealthy,numSick,numImmune,numDead);
     }
+    public void printUserInput(UserInput userInput) {
+        System.out.println("Population size: " +  userInput.getPopulationSize()* userInput.getPopulationSize());
+        System.out.println("Contamination probability: " +  userInput.getContaminationProbability() + "%");
+        System.out.println("Sick days: " +  userInput.getSickDaysMin() + " - " + userInput.getSickDaysMax() + " days");
+        System.out.println("Death probability: " +  userInput.getDeathProbability() + "%");
+    }
 }

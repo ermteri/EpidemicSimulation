@@ -20,8 +20,8 @@ public class Control {
 
     }
     public void startSimulation() {
-        System.out.println("Simulation started on population with " +
-                mPopulation.getSize() + " inhabitants");
+        System.out.println("Simulation started:");
+        mUtil.printUserInput(mUserInput);
         int numberOfDays = 0;
         numberOfInfectedAccumulated = 0;
         numberOfDeadAccumulated = 0;
@@ -29,7 +29,8 @@ public class Control {
             numberOfDays++;
             mUtil.reportDay(mPopulation);
         }
-        System.out.println("Simulation done after " + numberOfDays + " days");
+        System.out.println("Simulation done after " + numberOfDays + " days with " +
+                100.0*numberOfInfectedAccumulated/mPopulation.getSize() + "% infected");
     }
 
     private boolean loopOneDay() {
