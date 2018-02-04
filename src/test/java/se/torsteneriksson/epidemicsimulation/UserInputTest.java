@@ -8,8 +8,34 @@ class UserInputTest {
 
     @BeforeEach
     void setUp() {
-        String args[] = {"-cp", "0", "-dmi", "2", "-dma", "10", "-dp", "10", "-ps", "10"};
+        String args[] = {"-cp", "0", "-dmi", "2", "-dma", "10", "-dp", "10", "-ps", "10", "l"};
         ui = new UserInput(args);
+    }
+
+    @Test
+    void getNumberOfSimulations() {
+        Assert.assertTrue(ui.getContaminationProbability() == 0);
+    }
+
+    @Test
+    void getNumberOfSimulationsMissing() {
+        String args[] = {"-cd", "0", "-dmi", "2", "-dma", "10", "-dp", "10", "-ps", "10"};
+
+        ui = new UserInput(args);
+        Assert.assertTrue(ui.getNumberOfSimulations() == ui.NUMBEROFSIMULATIONS);
+    }
+
+    @Test
+    void getNumberOfSimulationsInvalid() {
+        String args[] = {"-n","2d","-cp", "w", "-dmi", "2", "-dma", "10", "-dp", "10", "-ps", "10"};
+        try {
+            ui = new UserInput(args);
+            ui.getNumberOfSimulations();
+        } catch (Exception e) {
+            Assert.assertTrue(e instanceof NumberFormatException);
+            return;
+        }
+        Assert.fail("No exception thrown, expected NumberFormatException");
     }
 
     @Test
@@ -141,5 +167,19 @@ class UserInputTest {
             return;
         }
         Assert.fail("No exception thrown, expected NumberFormatException");
+    }
+
+    @Test
+    void getIfLoggingEnabled() {
+        String args[] = {"-log"};
+        ui = new UserInput(args);
+        Assert.assertTrue(ui.getIfLogging() == true);
+    }
+    @Test
+    void getIfLoggingDisabled() {
+        String args[] = {"-lg"};
+        ui = new UserInput(args);
+        ui.getIfLogging();
+        Assert.assertTrue(ui.getIfLogging() == false);
     }
 }

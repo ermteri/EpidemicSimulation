@@ -57,10 +57,12 @@ class HumanBeingTest {
         int recovered = 0;
         int notRecovered = 0;
         for(int i = 0;i < 10000;i++) {
+            hb.setHealthState(HumanBeing.Healthstate.SICK);
             if(hb.checkIfRecovered(2,10))
                 recovered++;
             else
                 notRecovered++;
+
         }
         System.out.println("Recovered:" + recovered + " Not recovered:" + notRecovered);
         Assert.assertTrue(recovered >2100 && recovered < 2400);

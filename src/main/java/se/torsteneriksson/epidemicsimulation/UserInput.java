@@ -14,12 +14,14 @@ public class UserInput {
     final private Map<String, List<String>> mParams = new HashMap<>();
 
     // Default values
-    // -cp 17 -dmi 3 -dma 5 -dp 10 -ps 10
+    // -n 10 -cp 17 -dmi 3 -dma 5 -dp 10 -ps 10 -log
+    public int NUMBEROFSIMULATIONS      = 10;
     public int CONTAMINATIONPROPABILITY = 17;
     public int SICKDAYSMIN              = 3;
     public int SICKDAYSMAX              = 5;
     public int DEATHPROABILITY          = 10;
     public int POPULATIONSIZE           = 10;
+    public boolean LOGGING              = false;
 
     public UserInput(String[] args) {
         List<String> options = null;
@@ -40,6 +42,15 @@ public class UserInput {
             }
         }
     }
+
+    public int getNumberOfSimulations() {
+        try {
+            return Integer.valueOf(mParams.get("n").get(0));
+        } catch (NullPointerException e) {
+            return NUMBEROFSIMULATIONS;
+        }
+    }
+
     public int getContaminationProbability() {
         try {
             return Integer.valueOf(mParams.get("cp").get(0));
@@ -78,6 +89,13 @@ public class UserInput {
             return Integer.valueOf(mParams.get("ps").get(0));
         } catch (NullPointerException e) {
             return POPULATIONSIZE;
+        }
+    }
+    public boolean getIfLogging() {
+        if(mParams.get("log") != null) {
+                return true;
+        } else {
+            return LOGGING;
         }
     }
 }

@@ -14,14 +14,22 @@ public class Population implements Iterable {
 
     public Population(HumanBeing[][] hb) {
         mPopulation = hb;
-        for(int x = 0; x < hb.length;x++) {
-            for (int y = 0; y < hb[x].length ; y++) {
+        init();
+        mUtil = new Utilities();
+    }
+
+    public void init() {
+        for(int x = 0; x < mPopulation.length;x++) {
+            for (int y = 0; y < mPopulation[x].length ; y++) {
                 mPopulation[x][y] = new HumanBeing();
             }
         }
-        mPopulation[hb.length/2][hb.length/2].setHealthState(HumanBeing.Healthstate.SICK);
-        mPopulation[hb.length/2][hb.length/2].incrementSickDays();
-        mUtil = new Utilities();
+        setInitialState();
+    }
+
+    public void setInitialState() {
+        mPopulation[mPopulation.length/2][mPopulation.length/2].setHealthState(HumanBeing.Healthstate.SICK);
+        mPopulation[mPopulation.length/2][mPopulation.length/2].incrementSickDays();
 
     }
     @Override

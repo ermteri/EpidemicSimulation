@@ -17,10 +17,18 @@ public class Control {
     public void init() {
         HumanBeing hb[][] = new HumanBeing[mUserInput.getPopulationSize()][mUserInput.getPopulationSize()];
         mPopulation = new Population(hb);
-
     }
-    public void startSimulation() {
-        System.out.println("Simulation started:");
+
+    public void reset() {
+        for(Object o: mPopulation) {
+            HumanBeing hb = (HumanBeing)o;
+            hb.setHealthState(HumanBeing.Healthstate.HEALTHY);
+            hb.setImmune(false);
+            hb.setSickDays(0);
+        }
+        mPopulation.setInitialState();
+    }
+    public int startSimulation() {
         mUtil.printUserInput(mUserInput);
         int numberOfDays = 0;
         numberOfInfectedAccumulated = 0;
@@ -29,8 +37,12 @@ public class Control {
             numberOfDays++;
             mUtil.reportDay(mPopulation);
         }
-        System.out.println("Simulation done after " + numberOfDays + " days with " +
-                100.0*numberOfInfectedAccumulated/mPopulation.getSize() + "% infected");
+        int percentSick = 100 * numberOfInfectedAccumulated / mPopulation.getSize();
+        if(mUserInput.getIfLogging()) {
+            System.out.println("Simulation done after " + numberOfDays + " days with " +
+                    percentSick + "% infected");
+        }
+        return percentSick;
     }
 
     private boolean loopOneDay() {
@@ -55,7 +67,7 @@ public class Control {
         }
         numberOfInfectedAccumulated += numberOfGetInfected;
         numberOfDeadAccumulated += numberOfDied;
-        mUtil.reportResult( numberOfInfectedAccumulated, numberOfDeadAccumulated,
+        mUtil.reportResult(mUserInput, numberOfInfectedAccumulated, numberOfDeadAccumulated,
                 numberOfIll, numberOfGetInfected ,
                 numberOfDied, numberOfRecovered);
         return numberOfIll > 0;

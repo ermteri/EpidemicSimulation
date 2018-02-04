@@ -26,18 +26,20 @@ public class Utilities {
      * @param numberOfDied
      * @param numberOfRecovered
      */
-    public void reportResult(int numberOfInfectedAccumulated,
+    public void reportResult(UserInput ui, int numberOfInfectedAccumulated,
                              int numberOfDeadAccumulated,
                              int numberOfIll,
                              int numberOfGetInfected,
                              int numberOfDied,
                              int numberOfRecovered) {
-        System.out.println("InfectedAccu:" + numberOfInfectedAccumulated +
-                ", Dead accu:" + numberOfDeadAccumulated+
-                ", Ill:" + numberOfIll +
-                ", Infected:"+numberOfGetInfected +
-                ", Died:" + numberOfDied +
-                ", Recovered:"+ numberOfRecovered);
+        if(ui.getIfLogging()) {
+            System.out.println("InfectedAccu:" + numberOfInfectedAccumulated +
+                    ", Dead accu:" + numberOfDeadAccumulated +
+                    ", Ill:" + numberOfIll +
+                    ", Infected:" + numberOfGetInfected +
+                    ", Died:" + numberOfDied +
+                    ", Recovered:" + numberOfRecovered);
+        }
     }
 
     public void reportDay(Population population) {
@@ -61,9 +63,12 @@ public class Utilities {
         //System.out.printf("%d,%d,%d,%d\n",numHealthy,numSick,numImmune,numDead);
     }
     public void printUserInput(UserInput userInput) {
-        System.out.println("Population size: " +  userInput.getPopulationSize()* userInput.getPopulationSize());
-        System.out.println("Contamination probability: " +  userInput.getContaminationProbability() + "%");
-        System.out.println("Sick days: " +  userInput.getSickDaysMin() + " - " + userInput.getSickDaysMax() + " days");
-        System.out.println("Death probability: " +  userInput.getDeathProbability() + "%");
+        if(userInput.getIfLogging()) {
+            System.out.println("Simulation started!");
+            System.out.println("Population size: " + userInput.getPopulationSize() * userInput.getPopulationSize());
+            System.out.println("Contamination probability: " + userInput.getContaminationProbability() + "%");
+            System.out.println("Sick days: " + userInput.getSickDaysMin() + " - " + userInput.getSickDaysMax() + " days");
+            System.out.println("Death probability: " + userInput.getDeathProbability() + "%");
+        }
     }
 }

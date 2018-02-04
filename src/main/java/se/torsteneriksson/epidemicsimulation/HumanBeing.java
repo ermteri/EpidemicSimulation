@@ -29,6 +29,9 @@ public class HumanBeing {
     public int getSickDays() {
         return this.sickDays;
     }
+    public void setSickDays(int days) {
+        sickDays = days;
+    }
 
     public boolean isImmune() {
         return immune;
