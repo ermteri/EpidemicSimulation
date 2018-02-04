@@ -16,11 +16,10 @@ public class UserInput {
     // Default values
     // -cp 17 -dmi 3 -dma 5 -dp 10 -ps 10
     public int CONTAMINATIONPROPABILITY = 17;
-    public int SICKDAYSMIN = 3;
-    public int SICKDAYSMAX = 5;
-    public int DEATHPROABILITY = 10;
-    public int POPULATIONSIZE = 10;
-
+    public int SICKDAYSMIN              = 3;
+    public int SICKDAYSMAX              = 5;
+    public int DEATHPROABILITY          = 10;
+    public int POPULATIONSIZE           = 10;
 
     public UserInput(String[] args) {
         List<String> options = null;

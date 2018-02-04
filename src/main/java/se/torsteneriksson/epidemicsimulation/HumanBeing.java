@@ -49,7 +49,7 @@ public class HumanBeing {
         int result = min + (int) (r.nextDouble()*(max-min+1));
 
         //System.out.println("Result:"+ result);
-        if(sickDays >= result) {
+        if(healthState == SICK && sickDays >= result) {
             healthState = HEALTHY;
             immune = true;
             return true;
